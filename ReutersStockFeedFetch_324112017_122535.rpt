@@ -1,0 +1,64 @@
+**************************************************** Reuters Stock Feed Fetcher ***************************************************
+Program Start Time :Mon Nov 20 12:25:31 SGT 2017
+Program End Time   :Mon Nov 20 12:25:35 SGT 2017
+***********************************************************************************************************************************
+ 
+List Of Venues Available for Subscription
+ 
+----- -----------------------------------------------------------  -------------------------
+S.No  Package Name                                                 Subscription Id          
+----- -----------------------------------------------------------  -------------------------
+1     MON - Montreal Stock Exchange                                0x0400dc1d24a00cb4       
+2     TOR - Toronto Stock Exchange                                 0x0400dc1d24a00cb4       
+3     CXX - CHI-X CANADA - 2ND LIT MARKET - L1                     0x0400dc1d24a00cb4       
+----- -----------------------------------------------------------  -------------------------
+ 
+ 
+List Of Files Available for Download
+ 
+----- ------------------------------------------------------------ ------------------------- ------------------------- --------------- ---------- -----------------------------------
+S.No  File Name                                                    Subscription Id           Release Date/Time         FileSize(Bytes) Frequency  MD5 Checksum                       
+----- ------------------------------------------------------------ ------------------------- ------------------------- --------------- ---------- -----------------------------------
+1     CXX-2017-11-19-NORMALIZEDMP-Report-1-of-1.csv.gz             0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  13709           Daily                                         
+2     CXX-2017-11-19-NORMALIZEDMP-Data-1-of-1.csv.gz               0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  399             Daily      b2c400018134fbcd4805b170de24905c   
+3     MON-2017-11-19-MARKETPRICE-Report-1-of-1.csv.gz              0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  48343           Daily                                         
+4     MON-2017-11-19-MARKETPRICE-Data-1-of-1.csv.gz                0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  236606          Daily      3dd41fd32235a828a0eeb2ca2fb87db8   
+5     MON-2017-11-19-NORMALIZEDMP-Report-1-of-1.csv.gz             0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  23948           Daily                                         
+6     MON-2017-11-19-NORMALIZEDMP-Data-1-of-1.csv.gz               0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  399             Daily      b2c400018134fbcd4805b170de24905c   
+7     TOR-2017-11-19-LEGACYLEVEL2-Report-1-of-1.csv.gz             0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  9675            Daily                                         
+8     TOR-2017-11-19-NORMALIZEDMP-Report-1-of-1.csv.gz             0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  9579            Daily                                         
+9     CXX-2017-11-19-MARKETPRICE-Report-1-of-1.csv.gz              0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  39538           Daily                                         
+10    TOR-2017-11-19-LEGACYLEVEL2-Data-1-of-1.csv.gz               0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  155             Daily      4566f2d5b4ed94366b8fad128e6d12bb   
+11    TOR-2017-11-19-NORMALIZEDMP-Data-1-of-1.csv.gz               0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  466             Daily      e139db9950159e5e2486e924497ee9a0   
+12    CXX-2017-11-19-MARKETPRICE-Data-1-of-1.csv.gz                0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  115863          Daily      657a0ccc3a981182d8f30938ec13c11d   
+13    MON-2017-11-19-NORMALIZEDLL2-Report-1-of-1.csv.gz            0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  23948           Daily                                         
+14    TOR-2017-11-19-MARKETPRICE-Report-1-of-1.csv.gz              0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  45156           Daily                                         
+15    TOR-2017-11-19-NORMALIZEDLL2-Report-1-of-1.csv.gz            0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  9675            Daily                                         
+16    MON-2017-11-19-NORMALIZEDLL2-Data-1-of-1.csv.gz              0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  230             Daily      aea69465f84bad58fa485a7f347afaf3   
+17    TOR-2017-11-19-NORMALIZEDLL2-Data-1-of-1.csv.gz              0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  230             Daily      aea69465f84bad58fa485a7f347afaf3   
+18    TOR-2017-11-19-MARKETPRICE-Data-1-of-1.csv.gz                0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  362158          Daily      cc5dfa6e29f44951288cfbbe4b9a6d21   
+19    MON-2017-11-19-LEGACYLEVEL2-Report-1-of-1.csv.gz             0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  38452           Daily                                         
+20    MON-2017-11-19-LEGACYLEVEL2-Data-1-of-1.csv.gz               0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  43925           Daily      b015962ad26b15090db6fa1a0a96154b   
+21    CXX-2017-11-19-CORP-Data-1-of-1.csv.gz                       0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  7154            Daily      ba90698ffc939e38fd068266c3c04d10   
+22    CXX-2017-11-19-Instruments-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  46879           Daily      be0a92cab203648205b06cbadcd6ed36   
+23    TOR-2017-11-19-REF-Data-1-of-1.csv.gz                        0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  1925            Daily      de104345ae9f2471bad6eae6dbf5dc06   
+24    CXX-2017-11-19-REF-Data-1-of-1.csv.gz                        0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  2888            Daily      18092c85fa4edb21cad2fdecec41438b   
+25    TOR-2017-11-19-REF-Data-CUSIP-SEDOL-1-of-1.csv.gz            0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  2025            Daily      51f1f4ef74bffb6f5906220e5482d16b   
+26    CXX-2017-11-19-Instruments-CUSIP-SEDOL-1-of-1.csv.gz         0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  105538          Daily      321fc086b8947a2fd9c2379aeb8e50ef   
+27    CXX-2017-11-19-REF-Report-1-of-1.csv.gz                      0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  14225           Daily      6e40ad9dd6f8adb89dbaa4ce3a07e7f9   
+28    TOR-2017-11-19-Instruments-CUSIP-SEDOL-1-of-1.csv.gz         0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  59396           Daily      e1d099a12b32278b0e2ca36b904c8cc8   
+29    TOR-2017-11-19-REF-Report-1-of-1.csv.gz                      0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  9862            Daily      62a736fa91a41f002ea8441ea4b3b6f0   
+30    MON-2017-11-19-REF-Report-1-of-1.csv.gz                      0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  25244           Daily      2fd04c99bf2c42b46a4c86b2b043ecbe   
+31    TOR-2017-11-19-Instruments-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  29575           Daily      f8f939a95447328e49310fa31e5619db   
+32    TOR-2017-11-19-CORP-Report-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  9845            Daily      fd36231bf551ecdb6a20c6347fec6e5f   
+33    CXX-2017-11-19-REF-Data-CUSIP-SEDOL-1-of-1.csv.gz            0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  3177            Daily      ae469b3b31e26283d989e87b86da3f2b   
+34    TOR-2017-11-19-CORP-Data-1-of-1.csv.gz                       0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  2397            Daily      0d05ac8ec176f6aa9a7ddfd3f709067d   
+35    MON-2017-11-19-Instruments-CUSIP-SEDOL-1-of-1.csv.gz         0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  51953           Daily      a712465a37d813217b5b7f5d36ff81fc   
+36    CXX-2017-11-19-CORP-Report-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  14184           Daily      587bfb3fa64c3085ec8457e862e60484   
+37    MON-2017-11-19-REF-Data-1-of-1.csv.gz                        0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  25547           Daily      b2eb677920a3f4ec00c68fa2f9eeec1a   
+38    MON-2017-11-19-CORP-Report-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  24844           Daily      aad6d048417447703060e20fc1e99eaa   
+39    MON-2017-11-19-Instruments-1-of-1.csv.gz                     0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  51864           Daily      22c976f167cafc400a755c0c08cf54be   
+40    MON-2017-11-19-REF-Data-CUSIP-SEDOL-1-of-1.csv.gz            0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  26294           Daily      0350b7eb923952d501048ea42c6ec054   
+41    MON-2017-11-19-CORP-Data-1-of-1.csv.gz                       0x0400dc1d24a00cb4        2017-11-20T02:00:00.000Z  736             Daily      97dbdcd538e156186d945c10d065e5bb   
+----- ------------------------------------------------------------ ------------------------- ------------------------- --------------- ---------- -----------------------------------
+ 
