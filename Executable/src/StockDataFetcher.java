@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
@@ -46,10 +48,11 @@ public class StockDataFetcher
 	static String startTime="";
 	static ArrayList<ReportLineVenueList> venueLines = new ArrayList<ReportLineVenueList>();
 	static ArrayList<FileDownLoadParams> fileListLines = new ArrayList<FileDownLoadParams>();
+	static ArrayList<String> exInstrumentFolders = new ArrayList<String>();
 	static PrintWriter writer;
 	static String fromDate=null;
 	static String toDate=null;
-
+	static String reportName=null;
 	public static void main(String[] args)
 	{
 		try
@@ -100,6 +103,10 @@ public class StockDataFetcher
 					{
 						getFilesForDateRange(subscriptionIdList.get(i)); //All files for that particular subscription id and date range (T-1) are fetched 
 					}
+					for(int i=0;i<packageDeliveryIdList.size();i++)
+					{
+						downloadFileByPackageDeliveryId(packageDeliveryIdList.get(i));
+					}
 					initializeReport(startTime,Calendar.getInstance().getTime().toString()); //Report to write the details of the job
 					if(venueLines.size() > 0)
 					{
@@ -109,15 +116,12 @@ public class StockDataFetcher
 						while (iterator.hasNext()){
 							ReportLineVenueList item = iterator.next();
 							printRowVenue(i,item.getPackageName(),item.getSubscriptionId());
+							exInstrumentFolders.add(item.getPackageName().substring(0, 3));
 							i++;
 						}
 						printRowVenueFooter();
 					}
 					writer.flush();
-					for(int i=0;i<packageDeliveryIdList.size();i++)
-					{
-						downloadFileByPackageDeliveryId(packageDeliveryIdList.get(i));
-					}
 					if(fileListLines.size() > 0)
 					{
 						printRowFileParamHeader();
@@ -147,6 +151,20 @@ public class StockDataFetcher
 		catch ( Exception e)
 		{
 			e.printStackTrace();
+		}
+		if(exInstrumentFolders.size() > 0)
+		{
+			Iterator<String> iterator = exInstrumentFolders.iterator();
+			String rptFileName=reportName.substring(reportName.lastIndexOf("/"));
+			while (iterator.hasNext()){
+				String item = iterator.next();
+				try {
+					Files.copy(new File(reportName).toPath(), new File(prop.getProperty("data_download_dir")+"/"+item+rptFileName).toPath(),StandardCopyOption.REPLACE_EXISTING);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	//Parse JSON response in this function
@@ -283,7 +301,8 @@ public class StockDataFetcher
 			HttpGet request = new HttpGet(url);
 			request.addHeader("content-type", "application/json");
 			request.addHeader("Authorization", "Token "+authToken);
-
+			request.setHeader("User-Agent", "PostmanRuntime/7.1.1");
+			
 			CloseableHttpResponse response = httpClient.execute(request);
 			if(response.getStatusLine().toString().contains("200"))
 			{	
@@ -344,9 +363,15 @@ public class StockDataFetcher
 		return returnData;
 	}
 	private static String getFileDir(String fileName) {
+		String dirMidLevel="";
 		String dirPrefix=fileName.substring(0,3);
+		if(fileName.contains("Instruments"))
+			dirMidLevel="Instruments";
+		else
+			dirMidLevel="TAS";
 		String dateFolder=fileName.substring(4,8)+"/"+fileName.substring(9,11);
-		return dirPrefix+"/"+dateFolder;
+		logger.debug("Dir for file " + fileName + " is "+dirPrefix+"/"+dirMidLevel +"/"+ dateFolder);
+		return dirPrefix+"/"+dirMidLevel +"/"+ dateFolder;
 	}
 	public static String verifyDownload(String fileName,String chkSum)
 	{
@@ -372,11 +397,11 @@ public class StockDataFetcher
 			{
 				if(sb.toString().equals(chkSum))
 				{
-					return "MD5 Match";
+					return "Checksums match.Verfied OK";
 				}
 				else
 				{
-					return "MD5 Mismatch";
+					return "Checksums do NOT match";
 				}
 			}
 			else
@@ -387,7 +412,7 @@ public class StockDataFetcher
 			return(e.getMessage());
 		} catch (IOException e) {
 			logger.error(e.getMessage());
-			return("Unable to verify download");
+			return("File Missing.Unable to verify");
 		}
 	}
 
@@ -443,10 +468,11 @@ public class StockDataFetcher
 		return true;
 	}
 	public static void initializeReport(String startTime, String endTime) {
-		DateFormat dateFormat = new SimpleDateFormat("DDMMYYYY_HHmmss");
+		DateFormat dateFormat = new SimpleDateFormat("ddMMYYYY-HH_mm");
 		Calendar cal = Calendar.getInstance();
+		reportName=prop.getProperty("reports_dir")+"/ReutersStockFeedFetch_"+dateFormat.format(cal.getTime())+".rpt";
 		try {
-			writer = new PrintWriter(prop.getProperty("reports_dir")+"/ReutersStockFeedFetch_"+dateFormat.format(cal.getTime())+".rpt", "UTF-8");
+			writer = new PrintWriter(reportName, "UTF-8");
 			writer.println("**************************************************** Reuters Stock Feed Fetcher ***************************************************");
 			writer.println("Program Start Time :"+startTime);
 			writer.println("Program End Time   :"+endTime);
