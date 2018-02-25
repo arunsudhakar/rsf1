@@ -301,7 +301,13 @@ public class StockDataFetcher
 			HttpGet request = new HttpGet(url);
 			request.addHeader("content-type", "application/json");
 			request.addHeader("Authorization", "Token "+authToken);
-			request.setHeader("User-Agent", "PostmanRuntime/7.1.1");
+			if(prop.containsKey("user_agent"))
+			{
+				logger.info("Overriding user-agent to "+prop.getProperty("user_agent"));
+				request.setHeader("User-Agent", prop.getProperty("user_agent"));
+			}
+			else
+				request.setHeader("User-Agent", "PostmanRuntime/7.1.1");
 			
 			CloseableHttpResponse response = httpClient.execute(request);
 			if(response.getStatusLine().toString().contains("200"))
@@ -336,6 +342,11 @@ public class StockDataFetcher
 			HttpGet request = new HttpGet(url);
 			request.addHeader("content-type", "application/json");
 			request.addHeader("Authorization", "Token "+authToken);
+			if(prop.containsKey("direct_download") && prop.getProperty("direct_download").equalsIgnoreCase("true"))
+			{
+				logger.debug("Direct Download ON");
+				request.addHeader("X-Direct-Download","true");
+			}
 			request.setHeader(HttpHeaders.ACCEPT_ENCODING, "gzip");
 
 			CloseableHttpResponse response = httpClient.execute(request);
@@ -369,7 +380,7 @@ public class StockDataFetcher
 			dirMidLevel="Instruments";
 		else
 			dirMidLevel="TAS";
-		String dateFolder=fileName.substring(4,8)+"/"+fileName.substring(9,11);
+		String dateFolder=fileName.substring(4,8)+"/"+fileName.substring(9,11)+"/"+fileName.substring(12,14);
 		logger.debug("Dir for file " + fileName + " is "+dirPrefix+"/"+dirMidLevel +"/"+ dateFolder);
 		return dirPrefix+"/"+dirMidLevel +"/"+ dateFolder;
 	}
